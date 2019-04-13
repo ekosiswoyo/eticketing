@@ -10,13 +10,12 @@ if(empty($_SESSION['username'])){
 // $data = mysqli_fetch_array($sql);
 // echo $data['nama'];
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistem Informasi eTicketing</title>
+  <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -25,6 +24,8 @@ if(empty($_SESSION['username'])){
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -39,7 +40,8 @@ if(empty($_SESSION['username'])){
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -48,9 +50,9 @@ if(empty($_SESSION['username'])){
     <!-- Logo -->
     <a href="../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">e<b>Ticketing</b></span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">e<b>Ticketing</b></span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -202,7 +204,8 @@ if(empty($_SESSION['username'])){
                         <small class="pull-right">20%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">20% Complete</span>
                         </div>
                       </div>
@@ -216,7 +219,8 @@ if(empty($_SESSION['username'])){
                         <small class="pull-right">40%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">40% Complete</span>
                         </div>
                       </div>
@@ -230,7 +234,8 @@ if(empty($_SESSION['username'])){
                         <small class="pull-right">60%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
@@ -244,7 +249,8 @@ if(empty($_SESSION['username'])){
                         <small class="pull-right">80%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">80% Complete</span>
                         </div>
                       </div>
@@ -326,7 +332,7 @@ if(empty($_SESSION['username'])){
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
+          <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
@@ -376,8 +382,8 @@ if(empty($_SESSION['username'])){
             <i class="fa fa-pie-chart"></i>
             <span>Charts</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
@@ -391,8 +397,8 @@ if(empty($_SESSION['username'])){
             <i class="fa fa-laptop"></i>
             <span>UI Elements</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
@@ -403,29 +409,29 @@ if(empty($_SESSION['username'])){
             <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li class="active"><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
         </li>
         <li>
@@ -451,8 +457,8 @@ if(empty($_SESSION['username'])){
           <a href="#">
             <i class="fa fa-folder"></i> <span>Examples</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
@@ -470,8 +476,8 @@ if(empty($_SESSION['username'])){
           <a href="#">
             <i class="fa fa-share"></i> <span>Multilevel</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
@@ -512,23 +518,10 @@ if(empty($_SESSION['username'])){
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Tambah User
-        <!-- <small>Preview</small> -->
-      </h1>
-      <!-- <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">General Elements</li>
-      </ol> -->
-    </section>
-
-    <!-- Main content -->
     <section class="content">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-12">
+        <div class="col-md-6">
           <!-- general form elements -->
           <div class="box box-primary">
             <!-- <div class="box-header with-border">
@@ -536,35 +529,86 @@ if(empty($_SESSION['username'])){
             </div> -->
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="post">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">ID User</label>
-                  <input type="text" name="id_user" class="form-control" id="exampleInputEmail1" placeholder="ID User">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                   <label for="exampleInputPassword1">Level User</label><br>
-                 <select name="level" class="form-control">
-                   <option>- Pilih Level User -</option>
-                   <option value="admin_tiket">Admin Tiket</option>
-                 </select>
+                <form role="form" method="post">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">ID User</label>
+                      <input type="text" name="id_user" class="form-control" id="exampleInputEmail1" placeholder="ID User">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Level User</label><br>
+                    <select name="level" class="form-control">
+                      <option>- Pilih Level User -</option>
+                      <option value="admin_tiket">Admin Tiket</option>
+                    </select>
 
-                </div>
-               
-              </div>
-              <!-- /.box-body -->
+                    </div>
+                  
+                  </div>
+                  <!-- /.box-body -->
 
-              <div class="box-footer">
-                <button type="submit" name="user" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+                  <div class="box-footer">
+                    <button type="submit" name="user" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
           </div>
           <!-- /.box -->
+</div>
+<div class="col-xs-6">
+         
+          <!-- /.box -->
 
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Data User</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+
+                <thead>
+                <tr>
+                <th>No</th>
+                  <th>ID.User</th>
+                  <th>Level User</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                <?php
+                include '../config.php';
+                $no=1;
+                
+                $query = mysqli_query($connect, "SELECT * FROM tb_user");
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+
+                <tr>
+                  <td><?php echo $no++;?></td>
+                  <td><?php echo $data['id_user'];?></td>
+                  <td><?php echo $data['level'];?>
+                  </td>
+                </tr>
+
+                <?php 
+               
+                }
+               
+                ?>
+               
+                </tbody>
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+</div>
          
           <!-- /.box -->
 
@@ -574,8 +618,12 @@ if(empty($_SESSION['username'])){
           <!-- Input addon -->
           
           <!-- /.box -->
-
+          <div class="row">
+       
+        <!-- /.col -->
+      </div>
         </div>
+        
         <!--/.col (left) -->
         <!-- right column -->
        
@@ -583,10 +631,19 @@ if(empty($_SESSION['username'])){
       </div>
       <!-- /.row -->
     </section>
+
+    <!-- Main content -->
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -788,12 +845,31 @@ if(empty($_SESSION['username'])){
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>
 <?php

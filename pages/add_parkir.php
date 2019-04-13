@@ -635,6 +635,7 @@ $data = mysqli_fetch_array($sql);
 
                 <thead>
                 <tr>
+                <th>No</th>
                   <th>No Kendaraan</th>
                   <th>Jenis Kendaraan</th>
                   <th>Jumlah Pengunjung</th>
@@ -648,11 +649,13 @@ $data = mysqli_fetch_array($sql);
                 
                 <?php
                 include '../config.php';
+                $no=1;
                 $query = mysqli_query($connect, "SELECT * FROM tb_parkir ORDER BY id DESC");
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
 
                 <tr>
+                <td><?php echo $no++;?></td>
                   <td><?php echo $data['plat'];?></td>
                   <td><?php echo $data['jenis'];?>
                   </td>

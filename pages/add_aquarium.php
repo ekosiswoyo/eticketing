@@ -622,7 +622,7 @@ if(empty($_SESSION['username'])){
 
         </tbody>
         </table>
-        <center><p>Jumlah Pengunjung <?php echo $data['jml_orang'];?> Orang</p></center><hr>
+        <center><p>Jumlah Pengunjung <?php echo $data['jml_orang'];?> Orang</p><p>Tanggal <?php echo $data['tanggal'];?></p></center><hr>
         </center>
           </div>
 
@@ -650,6 +650,7 @@ if(empty($_SESSION['username'])){
 
                 <thead>
                 <tr>
+                <th>No</th>
                   <th>No. TIKET</th>
                   <th>Jumlah Pengunjung</th>
                   <th>Total Biaya</th>
@@ -660,11 +661,13 @@ if(empty($_SESSION['username'])){
                 
                 <?php
                 include '../config.php';
+                $no =1;
                 $query = mysqli_query($connect, "SELECT * FROM tb_aquarium ORDER BY id_aquarium DESC");
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
 
                 <tr>
+                <td><?php echo $no++;?></td>
                   <td><?php echo $data['id_aquarium'];?></td>
                   <td><?php echo $data['jml_orang'];?>
                   </td>

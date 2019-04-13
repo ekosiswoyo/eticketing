@@ -16,10 +16,10 @@ $pdf->Cell(190,7,'BULANAN',0,1,'C');
 $pdf->Cell(10,7,'',0,1);
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(20,6,'No',1,0);
-$pdf->Cell(85,6,'NAMA MAHASISWA',1,0);
-$pdf->Cell(27,6,'NO HP',1,0);
-$pdf->Cell(25,6,'TANGGAL LHR',1,1);
+$pdf->Cell(10,6,'No',1,0);
+$pdf->Cell(25,6,'BLN',1,0);
+$pdf->Cell(27,6,'Orang',1,0);
+$pdf->Cell(25,6,'Sepeda',1,1);
 
 $pdf->SetFont('Arial','',10);
 
