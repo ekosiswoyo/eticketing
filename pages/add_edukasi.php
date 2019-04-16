@@ -4,7 +4,7 @@ session_start();
 if(empty($_SESSION['username'])){
     header('location: ../index.php');
     exit(); 
-}include ('../config.php');
+}include ('../config.php'); 
 // $id = $_GET['id_sekolah'];
 // $sql = mysqli_query($connect, "SELECT * FROM profil WHERE id_sekolah='1'");
 // $data = mysqli_fetch_array($sql);

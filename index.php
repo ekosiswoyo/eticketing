@@ -114,7 +114,9 @@ if ($tampil != null) {
     // ... lanjut periksa password
 
     if ($pass==$tampil['password']) {
-    $_SESSION['username'] = $tampil;
+    $_SESSION['username'] = $tampil['id_user'];
+    $_SESSION['nama_user'] = $tampil['nama_user'];
+    
     echo "<script>window.alert('Login Success')</script>";
     echo "<script>window.location='pages/calendar.html';</script>";
   } 

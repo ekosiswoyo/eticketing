@@ -20,12 +20,13 @@ $pdf->Cell(10,6,'No',1,0);
 $pdf->Cell(25,6,'BLN',1,0);
 $pdf->Cell(27,6,'Orang',1,0);
 $pdf->Cell(25,6,'Sepeda',1,1);
-
+$no =1;
 $pdf->SetFont('Arial','',10);
 
 include '../config.php';
 $mahasiswa = mysqli_query($connect, "select * from tb_parkir");
 while ($row = mysqli_fetch_array($mahasiswa)){
+    $pdf->Cell(10,6,$no++,1,0);
     $pdf->Cell(20,6,$row['plat'],1,0);
     $pdf->Cell(85,6,$row['jenis'],1,0);
     $pdf->Cell(27,6,$row['jml_orang'],1,0);

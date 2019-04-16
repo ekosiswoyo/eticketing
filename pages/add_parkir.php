@@ -546,19 +546,21 @@ if(empty($_SESSION['username'])){
               <div class="box-body">
                
 
+            <input value="<?php echo $_SESSION['username'];?>" name="id_user" type="hidden">
                 <div class="form-group">
                   <label for="exampleInputEmail1">No Kendaraan</label>
                   <input type="text" name="plat" class="form-control" id="exampleInputEmail1" placeholder="No Kendaraan">
                 </div>
                  <div class="form-group">
                    <label for="exampleInputPassword1">Jenis Kendaraan</label><br>
-                 <select name="jenis" class="form-control">
-                   <option>- Pilih Jenis Kendaraan -</option>
-                   <option value="Sepeda">Sepeda</option>
-                   <option value="Sepeda Motor">Sepeda Motor</option>
-                   <option value="Mobil">Mobil</option>
-                   <option value="Bus">Bus</option>
-                 </select>
+                    <select name="jenis" class="form-control">
+                      <option>- Pilih Jenis Kendaraan -</option>
+                      <option value="Sepeda">Sepeda</option>
+                      <option value="Sepeda Motor">Sepeda Motor</option>
+                      <option value="Mobil">Mobil</option>
+                      <option value="Bis">Bis</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Jumlah Orang</label>
@@ -930,25 +932,29 @@ function rupiah($angka){
  
 }
 if(isset($_POST['parkir'])){
+    $id_user = $_POST['id_user'];
     $plat = $_POST['plat'];
     $jenis = $_POST['jenis'];
     $jml_orang = $_POST['jml_orang'];
     $biayaorang = $jml_orang*2000;
     $date = date('Y-m-d H:i:s');
-    if($jenis == "Sepeda"){
-      $parkir= 1000;
+    if($jenis == 'Sepeda'){
+      $parkir = 1000;
       $biayaparkir = $parkir+$biayaorang;
-    }elseif ($jenis == "Sepeda Motor") {
-      $parkir= 2000;
-       $biayaparkir = $parkir+$biayaorang;
-    }elseif ($jenis == "Mobil") {
-      $parkir= 5000;
+    }else if($jenis == 'Sepeda Motor'){
+      $parkir = 2000;
+      $biayaparkir = $parkir+$biayaorang;
+    }else if($jenis = 'Mobil'){
+      $parkir = 5000;
+      $biayaparkir = $parkir+$biayaorang;
+    }else if($jenis = 'Bis'){
+      $parkir = 8000;
       $biayaparkir = $parkir+$biayaorang;
     }else{
-      $parkir= 8000;
-       $biayaparkir = $parkir+$biayaorang;
+      $biayaparkir = $biayaorang;
     }
-    $sql = "INSERT INTO tb_parkir (plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal) VALUES ('$plat','$jenis','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date')";
+   
+    $sql = "INSERT INTO tb_parkir (id_user,plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal) VALUES ('$id_user','$plat','$jenis','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date')";
     $query = mysqli_query($connect, $sql);
 
     if($query){
