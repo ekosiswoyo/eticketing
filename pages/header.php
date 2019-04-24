@@ -109,7 +109,9 @@ if(empty($_SESSION['username'])){
               
               <!-- Menu Footer-->
               <li class="user-footer">
-    
+              <div class="pull-left">
+                  <a href="ubah_password.php" class="btn btn-default btn-flat">Ubah Password</a>
+                </div>
                 <div class="pull-right">
                   <a href="signout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
