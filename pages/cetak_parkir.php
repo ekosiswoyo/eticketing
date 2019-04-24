@@ -44,8 +44,9 @@ $pdf->SetFont('Arial','',15);
 // while ($row = mysqli_fetch_array($mahasiswa)){
     $pdf->Cell(60,8,$data['plat'],1,0);
     $pdf->Cell(60,8,rupiah($data['total_biaya']),1,1);
-    $pdf->SetFont('Arial','',8,'C');
-    $pdf->Cell(120,6,$data['jenis'],1,1);
+    $pdf->SetFont('Arial','',10,'C');
+    $pdf->Cell(60,6,'Jenis Kendaraan',1,0);
+    $pdf->Cell(60,6,$data['jenis'],1,1);
 // }
 
 $pdf->Output();

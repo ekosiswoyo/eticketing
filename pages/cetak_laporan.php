@@ -30,7 +30,7 @@ $pdf->Cell(10,6,'No',1,0);
 $pdf->Cell(15,6,'BLN',1,0);
 $pdf->Cell(25,6,'ORANG',1,0);
 $pdf->Cell(25,6,'SEPEDA',1,0);
-$pdf->Cell(30,6,'SEPEDA MOTOR',1,0);
+$pdf->Cell(30,6,'MOTOR',1,0);
 $pdf->Cell(25,6,'MOBIL',1,0);
 $pdf->Cell(25,6,'BUS',1,0);
 $pdf->Cell(40,6,'WAHANA AQUARIUM',1,0);

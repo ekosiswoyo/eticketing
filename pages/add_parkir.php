@@ -42,11 +42,11 @@ include('header.php');
             <form action="" method="post">
               <div class="box-body">
               <label class="radio-inline" for="hasil-0">
-                <input type="radio" onclick="document.getElementById('plat').disabled = false;document.getElementById('jenis').disabled = false;" name="hasil" id="hasil-0" value="1" required selected>
+                <input type="radio" onclick="document.getElementById('plat').disabled = false;document.getElementById('jenis').disabled = false;" name="hasil" id="hasil-0" value="1" selected required>
                 Berkendara
             </label> 
             <label class="radio-inline" for="hasil-1">
-                <input type="radio" name="hasil" id="hasil-1" value="0"  onclick="document.getElementById('plat').disabled = true;document.getElementById('jenis').disabled = true;" >
+                <input type="radio" name="hasil" id="hasil-1" value="0"  onclick="document.getElementById('plat').disabled = true;document.getElementById('jenis').disabled = true;" required >
                 Tidak Berkendara
             </label>
              
@@ -61,14 +61,14 @@ include('header.php');
                     <select name="jenis" id="jenis" class="form-control">
                       <option>- Pilih Jenis Kendaraan -</option>
                       <option value="Sepeda">Sepeda</option>
-                      <option value="Sepeda Motor">Sepeda Motor</option>
+                      <option value="Motor">Motor</option>
                       <option value="Mobil">Mobil</option>
                       <option value="Bus">Bus</option>
                     </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Jumlah Orang</label>
-                  <input type="number" name="jml_orang" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Orang">
+                  <input type="number" name="jml_orang" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Orang" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
                 </div>
                
                
@@ -113,9 +113,8 @@ $data = mysqli_fetch_array($sql);
 
         </tbody>
         </table>
-        <center><p><?php echo $data['jenis'];?> / <?php echo $data['tanggal'];?></p></center>
-        <a href="cetak_parkir.php" ><button class="btn btn-primary">Cetak</button></a><hr>
-        </center>
+        <center><p><?php echo $data['jenis'];?> / <?php echo $data['tanggal'];?></p>
+        <a href="cetak_parkir.php" ><button class="btn btn-primary">Cetak</button></a><hr></center>
           </div>
 
           
@@ -150,6 +149,7 @@ $data = mysqli_fetch_array($sql);
                   <th>Biaya Parkir</th>
                   <th>Total Biaya</th>
                   <th>Tanggal</th>
+                  <th>Jam</th>
                   <?php  if($_SESSION['level'] == "Administrator") { ?>
                   <th>Aksi</th>
                   <?php } ?>
@@ -174,10 +174,11 @@ $data = mysqli_fetch_array($sql);
                   <td><?php echo rupiah($data['biaya_parkir']);?></td>
                   <td><?php echo rupiah($data['total_biaya']);?></td>
                   <td><?php echo $data['tanggal'];?></td>
+                  <td><?php echo $data['jam'];?></td>
                   <?php  if($_SESSION['level'] == "Administrator") { ?>
                   <td><center>
-                                <a class='fa fa-fw fa-edit' title='Ubah' href='delete_parkir.php?id_parkir=<?php echo $data['id'];?>'></a>
-                                <a class='fa fa-fw fa-eraser' title='Hapus' href='delete_parkir.php?id_parkir=<?php echo $data['id'];?>'></a>
+                                <a class="fa fa-fw fa-edit" title="Ubah" href="edit_parkir.php?id_parkir=<?php echo $data['id'];?>"></a>
+                                <a class="fa fa-fw fa-eraser" title="Hapus" href="delete_parkir.php?id_parkir=<?php echo $data['id'];?>" onclick="javascript: return confirm('Anda yakin hapus ?')"></a>
                               </center></td>
                   <?php } ?>
                 </tr>
@@ -218,11 +219,12 @@ if(isset($_POST['parkir'])){
     $jenis = $_POST['jenis'];
     $jml_orang = $_POST['jml_orang'];
     $biayaorang = $jml_orang*2000;
-    $date = date('Y-m-d H:i:s');
+    $date = date('Y-m-d');
+    $time = date('H:i:s');
     if($jenis == 'Sepeda'){
       $parkir = 1000;
       $biayaparkir = $parkir+$biayaorang;
-    }else if($jenis == 'Sepeda Motor'){
+    }else if($jenis == 'Motor'){
       $parkir = 2000;
       $biayaparkir = $parkir+$biayaorang;
     }else if($jenis == 'Mobil'){
@@ -235,13 +237,14 @@ if(isset($_POST['parkir'])){
       $biayaparkir = $biayaorang;
     }
    if($plat != NULL){
-    $sql = "INSERT INTO tb_parkir (id_user,plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal) VALUES ('$id_user','$plat','$jenis','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date')";
+    $sql = "INSERT INTO tb_parkir (id_user,plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal,jam) VALUES ('$id_user','$plat','$jenis','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date','$time')";
    }else{
-    $sql = "INSERT INTO tb_parkir (id_user,plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal) VALUES ('$id_user','TIDAK BERKENDARA','TIDAK BERKENDARA','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date')";
+    $sql = "INSERT INTO tb_parkir (id_user,plat,jenis,jml_orang,biaya_orang,biaya_parkir,total_biaya,tanggal,jam) VALUES ('$id_user','-','-','$jml_orang','$biayaorang','$parkir','$biayaparkir','$date','$time')";
    }
     $query = mysqli_query($connect, $sql);
 
     if($query){
+       echo "<script>window.alert('Data Berhasil di Simpan !')</script>";
        echo "<script>window.location='add_parkir.php';</script>";
     }else{
         echo 'Update Data Gagal!';

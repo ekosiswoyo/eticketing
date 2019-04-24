@@ -74,7 +74,7 @@ include('header.php');
                  
                 <div class="form-group">
                   <label for="exampleInputPassword1">Jumlah Orang</label>
-                  <input type="number" name="jml_orang" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Orang">
+                  <input type="number" name="jml_orang" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Orang" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
                 </div>
                
                
@@ -119,7 +119,7 @@ include('header.php');
 
         </tbody>
         </table>
-        <center><p>Jumlah Pengunjung <?php echo $data['jml_orang'];?> Orang</p><p>Tanggal <?php echo $data['tanggal'];?></p></center>
+        <center><p>Jumlah Pengunjung <?php echo $data['jml_orang'];?> Orang</p><p>Tanggal <?php echo $data['tanggal'];?></p>
         <a href="cetak_edukasi.php" ><button class="btn btn-primary">Cetak</button></a><hr>
         </center>
           </div>
@@ -153,6 +153,7 @@ include('header.php');
                   <th>Jumlah Pengunjung</th>
                   <th>Total Biaya</th>
                   <th>Tanggal</th>
+                  <th>Jam</th>
                   <?php  if($_SESSION['level'] == "Administrator") { ?>
                   <th>Aksi</th>
                   <?php } ?>
@@ -174,10 +175,12 @@ include('header.php');
                   </td>
                   <td><?php echo rupiah($data['total']);?></td>
                   <td><?php echo $data['tanggal'];?></td>
+                  
+                  <td><?php echo $data['jam'];?></td>
                   <?php  if($_SESSION['level'] == "Administrator") { ?>
                   <td><center>
                                 <a class='fa fa-fw fa-edit' title='Ubah' href='edit_edukasi.php?id_edukasi="<?php echo $data['id_edukasi'];?>"'></a>
-                                <a class='fa fa-fw fa-eraser' title='Hapus' href='delete_edukasi.php?id_edukasi="<?php echo $data['id_edukasi'];?>"'></a>
+                                <a class='fa fa-fw fa-eraser' title='Hapus' href='delete_edukasi.php?id_edukasi="<?php echo $data['id_edukasi'];?>"' onclick="javascript: return confirm('Anda yakin hapus ?')"></a>
                               </center></td>
                   <?php } ?>
                 </tr>
@@ -218,9 +221,10 @@ if(isset($_POST['parkir'])){
     $id_edukasi = $_POST['edukasi'];
     $jml_orang = $_POST['jml_orang'];
     $biayaorang = $jml_orang*4000;
-    $date = date('Y-m-d H:i:s');
+    $date = date('Y-m-d');
+    $time = date('H:i:s');
    
-    $sql = "INSERT INTO tb_edukasi (id_edukasi,id_user,jml_orang,total,tanggal) VALUES ('$id_edukasi','$id_user','$jml_orang','$biayaorang','$date')";
+    $sql = "INSERT INTO tb_edukasi (id_edukasi,id_user,jml_orang,total,tanggal,jam) VALUES ('$id_edukasi','$id_user','$jml_orang','$biayaorang','$date','$time')";
     $query = mysqli_query($connect, $sql);
 
     if($query){

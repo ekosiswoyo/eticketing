@@ -30,6 +30,7 @@ $pdf->Cell(10,7,'',0,1);
 
 $pdf->SetFont('Arial','B',10,'C');
 $pdf->Cell(60,6,'NO TIKET',1,0);
+$pdf->Cell(60,6,'JUMLAH PENGUNJUNG',1,0);
 $pdf->Cell(60,6,'TOTAL BIAYA',1,1);
 
 // while ($row = mysqli_fetch_array($mahasiswa1)){
@@ -43,6 +44,7 @@ $pdf->SetFont('Arial','',15);
 
 // while ($row = mysqli_fetch_array($mahasiswa)){
     $pdf->Cell(60,8,$data['id_aquarium'],1,0);
+    $pdf->Cell(60,8,$data['jml_orang'],1,0);
     $pdf->Cell(60,8,rupiah($data['total']),1,1);
 // }
 

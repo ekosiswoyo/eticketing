@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>eTicketing| Log in</title>
+  <title>eTicketing | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -38,11 +38,11 @@
 
     <form action="" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="id_user" placeholder="ID User" required oninvalid="this.setCustomValidity('Username Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
+        <input type="text" class="form-control" name="id_user" placeholder="ID User" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password" required oninvalid="this.setCustomValidity('Password Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
+        <input type="password" class="form-control" name="password" placeholder="Password" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')" oninput="setCustomValidity('')">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -116,6 +116,7 @@ if ($tampil != null) {
     if ($pass==$tampil['password']) {
     $_SESSION['username'] = $tampil['id_user'];
     $_SESSION['nama_user'] = $tampil['nama_user'];
+    $_SESSION['level'] = $tampil['level'];
     
     echo "<script>window.alert('Login Success')</script>";
     echo "<script>window.location='pages/index.php';</script>";
@@ -127,7 +128,7 @@ if ($tampil != null) {
 } 
 else {
     echo "<script>window.alert('Login Failed')</script>";
-    echo "<script>window.location='index.php';</script>";
+    echo "<script>window.location=index.php';</script>";
 }
 }
 ?>
