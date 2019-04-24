@@ -34,12 +34,13 @@ $pdf->Cell(10,7,'',0,1);
 // $mahasiswa1 = mysqli_query($connect, "SELECT MONTHNAME(tanggal) as bulan FROM tb_parkir group by month(tanggal)");
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(168,6,'Laporan Pengunjung Pelabuhan',1,1);
+$pdf->Cell(188,6,'Laporan Pengunjung Pelabuhan',1,1);
 $pdf->Cell(10,6,'No',1,0);
 $pdf->Cell(30,6,'NAMA USER',1,0);
 $pdf->Cell(33,6,'NO. KENDARAAN',1,0);
 $pdf->Cell(20,6,'JENIS',1,0);
 $pdf->Cell(45,6,'JUMLAH PENGUNJUNG',1,0);
+$pdf->Cell(20,6,'TANGGAL',1,0);
 $pdf->Cell(30,6,'TOTAL BIAYA',1,1);
 
 // while ($row = mysqli_fetch_array($mahasiswa1)){
@@ -59,20 +60,22 @@ while ($parkird = mysqli_fetch_array($parkir)){
     $pdf->Cell(33,6,$parkird['plat'],1,0);
     $pdf->Cell(20,6,$parkird['jenis'],1,0);
     $pdf->Cell(45,6,$parkird['jml_orang'],1,0);
+    $pdf->Cell(20,6,$parkird['tanggal'],1,0);
     $pdf->Cell(30,6,rupiah($parkird['total_biaya']),1,1);
 }
-$pdf->Cell(138,6,'Total',1,0);
+$pdf->Cell(158,6,'Total',1,0);
 $pdf->Cell(30,6,rupiah($parkirs['total']),1,1);
 $pdf->Cell(110,6,'',0,1);
 
 // ========================
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(168,6,'Laporan Pengunjung Wisata Aquarium',1,1);
+$pdf->Cell(188,6,'Laporan Pengunjung Wisata Aquarium',1,1);
 $pdf->Cell(10,6,'No',1,0);
 $pdf->Cell(30,6,'NAMA USER',1,0);
 $pdf->Cell(45,6,'NO.TIKET',1,0);
 $pdf->Cell(48,6,'JUMLAH PENGUNJUNG',1,0);
+$pdf->Cell(20,6,'TANGGAL',1,0);
 $pdf->Cell(35,6,'TOTAL BIAYA',1,1);
 
 // while ($row = mysqli_fetch_array($mahasiswa1)){
@@ -91,20 +94,22 @@ while ($row = mysqli_fetch_array($sql)){
     $pdf->Cell(30,6,$row['nama_user'],1,0);
     $pdf->Cell(45,6,$row['id_aquarium'],1,0);
     $pdf->Cell(48,6,$row['jml_orang'],1,0);
+    $pdf->Cell(20,6,$row['tanggal'],1,0);
     $pdf->Cell(35,6,rupiah($row['total']),1,1);
 }
-$pdf->Cell(133,6,'Total',1,0);
+$pdf->Cell(153,6,'Total',1,0);
 $pdf->Cell(35,6,rupiah($jmlorgs['total']),1,1);
 $pdf->Cell(110,6,'',0,1);
 
 // ========================
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(168,6,'Laporan Wisata Edukasi',1,1);
+$pdf->Cell(188,6,'Laporan Wisata Edukasi',1,1);
 $pdf->Cell(10,6,'No',1,0);
 $pdf->Cell(30,6,'NAMA USER',1,0);
 $pdf->Cell(45,6,'NO.TIKET',1,0);
 $pdf->Cell(48,6,'JUMLAH PENGUNJUNG',1,0);
+$pdf->Cell(20,6,'TANGGAL',1,0);
 $pdf->Cell(35,6,'JUMLAH HARGA',1,1);
 
 
@@ -124,9 +129,10 @@ while ($row = mysqli_fetch_array($sql)){
     $pdf->Cell(30,6,$row['nama_user'],1,0);
     $pdf->Cell(45,6,$row['id_edukasi'],1,0);
     $pdf->Cell(48,6,$row['jml_orang'],1,0);
+    $pdf->Cell(20,6,$row['tanggal'],1,0);
     $pdf->Cell(35,6,rupiah($row['total']),1,1);
 }
-$pdf->Cell(133,6,'Total',1,0);
+$pdf->Cell(153,6,'Total',1,0);
 $pdf->Cell(35,6,rupiah($jmlorgs['total']),1,1);
 
 

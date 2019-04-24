@@ -30,9 +30,33 @@ include('header.php');
                 <form role="form" method="post">
                   <div class="box-body">
                   
+                <?php
+                 
+                 // mencari kode barang dengan nilai paling besar
+                 $query = mysqli_query($connect,"SELECT max(id_user) as maxKode FROM tb_user");
+                 $data = mysqli_fetch_array($query);
+                 $kode = $data['maxKode'];
+                  
+                 // mengambil angka atau bilangan dalam kode anggota terbesar,
+                 // dengan cara mengambil substring mulai dari karakter ke-1 diambil 6 karakter
+                 // misal 'BRG001', akan diambil '001'
+                 // setelah substring bilangan diambil lantas dicasting menjadi integer
+                 $noUrut = (int) substr($kode, 3, 3);
+                  
+                 // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
+                 $noUrut++;
+                  
+                 // membentuk kode anggota baru
+                 // perintah sprintf("%03s", $noUrut); digunakan untuk memformat string sebanyak 3 karakter
+                 // misal sprintf("%03s", 12); maka akan dihasilkan '012'
+                 // atau misal sprintf("%03s", 1); maka akan dihasilkan string '001'
+                 $char = "ID";
+                 $kodeUser = $char . sprintf("%03s", $noUrut);
+                 
+                 ?>
                     <div class="form-group">
                       <label for="exampleInputEmail1">ID User</label>
-                      <input type="text" name="id_user" class="form-control" id="exampleInputEmail1" placeholder="ID User" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong!')" oninput="setCustomValidity('')"> 
+                      <input type="text" name="id_user" class="form-control" id="exampleInputEmail1" placeholder="ID User" value="<?php echo $kodeUser;?>" readonly>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Nama User</label>
