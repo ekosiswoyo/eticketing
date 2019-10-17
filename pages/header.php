@@ -26,6 +26,8 @@ if(empty($_SESSION['username'])){
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+   <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -64,7 +66,7 @@ if(empty($_SESSION['username'])){
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header" >
     <!-- Logo -->
     <a href="../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -73,7 +75,7 @@ if(empty($_SESSION['username'])){
       <span class="logo-lg"><b>e</b>TICKETING</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top" >
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -93,13 +95,13 @@ if(empty($_SESSION['username'])){
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../dist/img/logo.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['nama_user']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/logo.png" class="img-circle" alt="User Image">
 
                 <p>
                 <?php echo $_SESSION['nama_user']; ?>
@@ -131,7 +133,7 @@ if(empty($_SESSION['username'])){
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../dist/img/logo.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION['nama_user']; ?></p>
@@ -148,9 +150,9 @@ if(empty($_SESSION['username'])){
         <?php  if($_SESSION['level'] == "Administrator") { 
           echo "
           <li><a href='index.php'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
-          <li><a href='add_parkir.php'><i class='fa fa-table'></i> <span>Data Parkir</span></a></li>
-          <li><a href='add_aquarium.php'><i class='fa fa-table'></i> <span>Data Wahana Aquarium</span></a></li>
-          <li><a href='add_edukasi.php'><i class='fa fa-table'></i> <span>Data Wahana Edukasi</span></a></li>
+          <li><a href='parkir.php'><i class='fa fa-table'></i> <span>Data Parkir</span></a></li>
+          <li><a href='aquarium.php'><i class='fa fa-table'></i> <span>Data Wahana Aquarium</span></a></li>
+          <li><a href='edukasi.php'><i class='fa fa-table'></i> <span>Data Wahana Edukasi</span></a></li>
           <li><a href='add_user.php'><i class='fa fa-table'></i> <span>Data User</span></a></li>
           <li class='treeview'>
           <a href='#'>
@@ -161,8 +163,9 @@ if(empty($_SESSION['username'])){
             </span>
           </a>
           <ul class='treeview-menu'>
-            <li><a href='cetak_laporan_periode.php'><i class='fa fa-circle-o'></i> Periode</a></li>            
-            <li><a href='cetak_laporan.php'><i class='fa fa-circle-o'></i> Tahunan</a></li>
+            <li><a href='cetak_laporan_hari.php'><i class='fa fa-circle-o'></i> Harian</a></li>            
+            <li><a href='cetak_laporan_bulanan.php' ><i class='fa fa-circle-o'></i> Bulanan</a></li>
+            <li><a href='cetak_laporan_tahunan.php' ><i class='fa fa-circle-o'></i> Tahunan</a></li>
           </ul>
         </li>
          

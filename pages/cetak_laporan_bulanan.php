@@ -18,7 +18,7 @@ include('header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Laporan Per Periode
+        Laporan Bulanan
         <!-- <small>Preview</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -35,42 +35,53 @@ include('header.php');
       <!-- /.box -->
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
 
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">Laporan Periode </h3>
+              <h3 class="box-title">Laporan Bulanan </h3>
             </div>
             <div class="box-body">
-                <form method="post" action="cetak_laporan_harian.php">
+                <form method="post" action="cetak_laporan_bulan.php" target="_blank">
               <!-- Date dd/mm/yyyy -->
-              <div class="form-group">
-                <label>Pilih Tanggal :</label>
+              <div class="form-group col-md-6">
+                <label>Pilih Bulan :</label>
 
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" name="awal" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
-                </div>
+                 <select name="bulan" class="form-control">
+                 <?php
+                include '../config.php';
+                $query = mysqli_query($connect, "SELECT MONTH(tanggal) as bulan FROM tb_parkir group by MONTH(tanggal) desc");
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                <option value="<?php echo $data['bulan']; ?>"><?php echo $data['bulan']; ?></option>
+                <?php } ?>
+
+                 </select>
+                <!-- /.input group -->
+              </div>
+              <div class="form-group col-md-6">
+                <label>Pilih Tahun :</label>
+
+                 <select name="tahun" class="form-control">
+                 <?php
+                include '../config.php';
+                $query = mysqli_query($connect, "SELECT YEAR(tanggal) as tahun FROM tb_parkir group by YEAR(tanggal) desc");
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                <option value="<?php echo $data['tahun']; ?>"><?php echo $data['tahun']; ?></option>
+                <?php } ?>
+
+                 </select>
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
 
               <!-- Date mm/dd/yyyy -->
-              <div class="form-group">
-              <label>Tanggal Akhir :</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" name="akhir" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
-                </div>
-              </div>
+             
               <div class="box-footer">
                 <button type="submit" name="update" class="btn btn-primary">Cetak</button>
               </div>
-</form>
+            </form>
               <!-- /.form group -->
 
               <!-- phone mask -->
@@ -94,6 +105,8 @@ include('header.php');
           <!-- /.box -->
 
         </div>
+
+
         <!-- /.col (left) -->
      
         <!-- /.col (right) -->

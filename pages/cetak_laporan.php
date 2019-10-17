@@ -10,6 +10,7 @@ function rupiah($angka){
   }
 // memanggil library FPDF
 require('../fpdf/fpdf.php');
+$tahun = $_POST['tahun'];
 // intance object dan memberikan pengaturan halaman PDF
 $pdf = new FPDF('l','mm','A4');
 // membuat halaman baru
@@ -17,10 +18,10 @@ $pdf->AddPage();
 // setting jenis font yang akan digunakan
 $pdf->SetFont('Arial','B',16);
 // mencetak string 
-$pdf->Cell(190,7,'LAPORAN',0,1,'C');
+$pdf->Cell(270,7,'LAPORAN TAHUNAN',0,1,'C');
 $pdf->SetFont('Arial','B',12);
-$pdf->Cell(190,7,'BULANAN',0,1,'C');
-
+$pdf->Cell(270,7,'WISATA BAHARI PELABUHAN PERIKANAN NUSANTARA PEKALONGAN',0,1,'C');
+$pdf->Cell(270,7,$tahun,0,1,'C');
 // Memberikan space kebawah agar tidak terlalu rapat
 $pdf->Cell(10,7,'',0,1);
 // $mahasiswa1 = mysqli_query($connect, "SELECT MONTHNAME(tanggal) as bulan FROM tb_parkir group by month(tanggal)");
@@ -168,6 +169,7 @@ $mahasiswa = mysqli_query($connect, "SELECT sum(total_biaya) as total, MONTHNAME
     $pdf->Cell(40,6,rupiah($totaqrdess['total']),1,0);
     $pdf->Cell(43,6,rupiah($totedudess['total']),1,1);
 
+    $pdf->SetFont('Arial','B',12);
     $pdf->Cell(25,6,'JUMLAH',1,0);
     $pdf->Cell(25,6,rupiah($jmlorgs['total']),1,0);
     $pdf->Cell(25,6,rupiah($jmlspds['total']),1,0);
@@ -176,7 +178,16 @@ $mahasiswa = mysqli_query($connect, "SELECT sum(total_biaya) as total, MONTHNAME
     $pdf->Cell(25,6,rupiah($jmlbuss['total']),1,0);
     $pdf->Cell(40,6,rupiah($jmlaqrs['total']),1,0);
     $pdf->Cell(43,6,rupiah($jmledus['total']),1,1);
-// }
+// }$pdf->SetFont('Arial','B',10);
+$pdf->Cell(100,7,'',0,0,'R');
+$pdf->Cell(100,7,'',0,0,'R');
+$pdf->Cell(70,7,'Pekalongan,.....................',0,1);
+$pdf->Cell(120,27,'',0,1);
+$pdf->SetFont('Arial','B',10);
 
+$pdf->Cell(100,7,'',0,0,'R');
+$pdf->Cell(100,7,'',0,0,'R');
+$pdf->Cell(70,7,'Bpk. Kunaedi',0,1);
+$pdf->SetFont('Arial','',9);
 $pdf->Output();
 ?>

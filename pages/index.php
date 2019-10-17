@@ -15,12 +15,17 @@ include 'header.php';
         <!-- left column -->
         <div class="col-md-12">
           <!-- general form elements -->
-          <div class="box box-primary">
+          <div class="box box-info">
 
           <h1 style="text-align:center;">SISTEM INFORMASI TICKETING PELABUHAN</h1><br>
            
             <!-- /.box-header -->
             <!-- form start -->
+            
+          </div>
+          <div class="box box-info">
+
+            <center><img src="../dist/wisata1.jpg" style="width:650px;height:400px;text-align:center;"></center>
             
           </div>
 

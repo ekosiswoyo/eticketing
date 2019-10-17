@@ -18,7 +18,7 @@ include('header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Laporan Per Periode
+        Laporan Harian
         <!-- <small>Preview</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -34,75 +34,54 @@ include('header.php');
     
       <!-- /.box -->
 
-      <div class="row">
+        <!-- /.col (left) -->
         <div class="col-md-6">
-
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">Laporan Periode </h3>
+              <h3 class="box-title">Pilih Tanggal</h3>
             </div>
-            <div class="box-body">
-                <form method="post" action="cetak_laporan_harian.php">
-              <!-- Date dd/mm/yyyy -->
-              <div class="form-group">
-                <label>Pilih Tanggal :</label>
 
-                <div class="input-group">
+            <form method="post" action="cetak_laporan_harian.php" target="_blank">
+            <div class="box-body">
+              <!-- Date -->
+              <div class="form-group">
+                <label>Tanggal:</label>
+
+                <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control" name="awal" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
+                  <input type="text" class="form-control pull-right" id="datepicker" name="tanggal">
                 </div>
                 <!-- /.input group -->
               </div>
-              <!-- /.form group -->
 
-              <!-- Date mm/dd/yyyy -->
-              <div class="form-group">
-              <label>Tanggal Akhir :</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" name="akhir" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
-                </div>
-              </div>
-              <div class="box-footer">
+
                 <button type="submit" name="update" class="btn btn-primary">Cetak</button>
-              </div>
-</form>
               <!-- /.form group -->
 
-              <!-- phone mask -->
               
-              <!-- /.form group -->
-
-              <!-- phone mask -->
-             
-              <!-- /.form group -->
-
-              <!-- IP mask -->
-              
-              <!-- /.form group -->
 
             </div>
+            </form>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
 
-          
+          <!-- iCheck -->
+         
+          </div>
           <!-- /.box -->
-
         </div>
-        <!-- /.col (left) -->
-     
         <!-- /.col (right) -->
-      </div>
+  
       <!-- /.row -->
 
     </section>
     <!-- /.content -->
   </div>
+
   <?php
+
 include 'footer.php';
 ?>

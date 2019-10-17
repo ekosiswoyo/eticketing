@@ -12,7 +12,7 @@ include('header.php');
 // echo $data['nama'];
 
 $id_user = $_GET['id_user'];
-$sqlus = mysqli_query($connect, "SELECT * FROM tb_user WHERE id_user=$id_user");
+$sqlus = mysqli_query($connect, "SELECT * FROM tb_user WHERE id_user='$id_user'");
 $editus = mysqli_fetch_array($sqlus);
 ?>
 ?>
@@ -45,11 +45,12 @@ $editus = mysqli_fetch_array($sqlus);
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  value="<?php echo $editus['password'];?>">
+                      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  value="">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Level User</label><br>
                     <select name="level" class="form-control">
+                      <option value="<?php echo $editus['level'];?>"><?php echo $editus['level'];?></option>
                       <option>- Pilih Level User -</option>
                       <option value="Petugas Parkir">Petugas Parkir</option>
                       <option value="Petugas Wahana Edukasi">Petugas Wahana Edukasi</option>
@@ -97,7 +98,7 @@ $editus = mysqli_fetch_array($sqlus);
                 include '../config.php';
                 $no=1;
                 
-                $query = mysqli_query($connect, "SELECT * FROM tb_user");
+                $query = mysqli_query($connect, "SELECT * FROM tb_user where level != 'Administrator'");
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
 
@@ -108,7 +109,7 @@ $editus = mysqli_fetch_array($sqlus);
                   <td><?php echo $data['nama_user'];?></td>
                   <td><?php echo $data['level'];?></td>
                   <td><center>
-                                <a class='fa fa-fw fa-edit' title='Ubah' href='edit_user.php?id_user="<?php echo $data['id_user'];?>"'></a>
+                                <a class='fa fa-fw fa-edit' title='Ubah' href='edit_user.php?id_user=<?php echo $data['id_user'];?>'></a>
                                 <a class='fa fa-fw fa-eraser' title='Hapus' href='delete_user.php?id_user="<?php echo $data['id_user'];?>"'></a>
                               </center></td>
                   
@@ -166,6 +167,15 @@ if(isset($_POST['user'])){
     $level = $_POST['level'];
     $nama_user = $_POST['nama'];
   
+  if($password == NULL){
+    $sql = "update tb_user set level='$level', nama_user='$nama_user' where id_user='$id_user'";
+    $query = mysqli_query($connect, $sql);
+    if($query){
+       echo "<script>window.location='add_user.php';</script>";
+    }else{
+        echo 'Update Data Gagal!';
+    }
+  }else{
     $sql = "update tb_user set password='$password',level='$level', nama_user='$nama_user' where id_user='$id_user'";
     $query = mysqli_query($connect, $sql);
     if($query){
@@ -173,6 +183,9 @@ if(isset($_POST['user'])){
     }else{
         echo 'Update Data Gagal!';
     }
+  }
+
+    
 
 }
 

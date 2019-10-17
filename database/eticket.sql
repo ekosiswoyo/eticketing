@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2019 at 05:06 AM
+-- Generation Time: Apr 30, 2019 at 01:57 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -29,11 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_aquarium` (
-  `id_aquarium` varchar(50) NOT NULL,
+  `id_aquarium` varchar(10) NOT NULL,
   `id_user` varchar(10) DEFAULT NULL,
-  `jml_orang` int(11) DEFAULT NULL,
+  `jml_orang` int(5) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,12 +41,12 @@ CREATE TABLE `tb_aquarium` (
 -- Dumping data for table `tb_aquarium`
 --
 
-INSERT INTO `tb_aquarium` (`id_aquarium`, `id_user`, `jml_orang`, `total`, `status`, `tanggal`, `jam`) VALUES
-('AQ004', 'ID010', 235, 940000, NULL, '2019-04-15', '11:14:45'),
-('AQ005', 'ID010', 3, 12000, NULL, '2019-04-21', '11:51:28'),
-('AQ006', 'ID010', 4, 16000, NULL, '2019-04-21', '12:51:10'),
-('AQ007', 'ID010', 2, 8000, NULL, '2019-04-23', '12:51:12'),
-('AQ008', 'ID010', 1, 4000, NULL, '2019-04-23', '12:51:14');
+INSERT INTO `tb_aquarium` (`id_aquarium`, `id_user`, `jml_orang`, `total`, `tanggal`, `jam`) VALUES
+('AQ004', 'ID010', 235, 940000, '2019-04-15', '11:14:45'),
+('AQ005', 'ID010', 3, 12000, '2019-04-21', '11:51:28'),
+('AQ006', 'ID010', 4, 16000, '2019-04-21', '12:51:10'),
+('AQ007', 'ID010', 2, 8000, '2019-04-23', '12:51:12'),
+('AQ008', 'ID010', 1, 4000, '2019-04-23', '12:51:14');
 
 -- --------------------------------------------------------
 
@@ -56,9 +55,9 @@ INSERT INTO `tb_aquarium` (`id_aquarium`, `id_user`, `jml_orang`, `total`, `stat
 --
 
 CREATE TABLE `tb_edukasi` (
-  `id_edukasi` varchar(50) NOT NULL,
+  `id_edukasi` varchar(10) NOT NULL,
   `id_user` varchar(10) DEFAULT NULL,
-  `jml_orang` int(11) DEFAULT NULL,
+  `jml_orang` int(5) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL
@@ -78,10 +77,10 @@ INSERT INTO `tb_edukasi` (`id_edukasi`, `id_user`, `jml_orang`, `total`, `tangga
 --
 
 CREATE TABLE `tb_parkir` (
-  `id` int(11) NOT NULL,
+  `id` int(5) NOT NULL,
   `id_user` varchar(10) DEFAULT NULL,
-  `plat` varchar(100) NOT NULL DEFAULT '-',
-  `jenis` varchar(100) DEFAULT NULL,
+  `plat` varchar(10) NOT NULL DEFAULT '-',
+  `jenis` varchar(15) DEFAULT NULL,
   `jml_orang` int(5) DEFAULT NULL,
   `biaya_orang` int(11) DEFAULT NULL,
   `biaya_parkir` int(11) DEFAULT NULL,
@@ -95,11 +94,12 @@ CREATE TABLE `tb_parkir` (
 --
 
 INSERT INTO `tb_parkir` (`id`, `id_user`, `plat`, `jenis`, `jml_orang`, `biaya_orang`, `biaya_parkir`, `total_biaya`, `tanggal`, `jam`) VALUES
-(25, 'ID010', 'B 2 RI', 'Bis', 2, 4000, 8000, 12000, '2019-04-23', '00:00:00'),
+(25, 'ID010', 'B 2 RI', 'Bis', 2, 4000, 8000, 12000, '2018-04-23', '00:00:00'),
 (27, 'ID010', 'B 2 RI', 'Bis', 555, 1110000, 8000, 1118000, '2019-04-23', '00:00:00'),
 (30, 'ID010', '-', '-', 4, 8000, 0, 8000, '2019-04-23', '13:21:18'),
 (31, 'ID012', '-', '-', 4, 8000, 0, 8000, '2019-04-23', '13:39:40'),
-(33, 'ID010', 'S 45 T', 'Mobil', 4, 8000, 5000, 13000, '2019-04-23', '20:53:08');
+(33, 'ID010', '-', '-', 43, 86000, 0, 86000, '2019-04-23', '20:53:08'),
+(34, 'ID010', '-', '-', 2, 4000, 0, 4000, '2019-04-30', '13:56:46');
 
 -- --------------------------------------------------------
 
@@ -109,9 +109,9 @@ INSERT INTO `tb_parkir` (`id`, `id_user`, `plat`, `jenis`, `jml_orang`, `biaya_o
 
 CREATE TABLE `tb_user` (
   `id_user` varchar(10) NOT NULL,
-  `password` varchar(100) NOT NULL DEFAULT '0',
-  `level` varchar(100) NOT NULL DEFAULT '0',
-  `nama_user` varchar(100) NOT NULL DEFAULT '0'
+  `password` varchar(50) NOT NULL DEFAULT '0',
+  `level` varchar(25) NOT NULL DEFAULT '0',
+  `nama_user` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -133,19 +133,22 @@ INSERT INTO `tb_user` (`id_user`, `password`, `level`, `nama_user`) VALUES
 -- Indexes for table `tb_aquarium`
 --
 ALTER TABLE `tb_aquarium`
-  ADD PRIMARY KEY (`id_aquarium`);
+  ADD PRIMARY KEY (`id_aquarium`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_edukasi`
 --
 ALTER TABLE `tb_edukasi`
-  ADD PRIMARY KEY (`id_edukasi`);
+  ADD PRIMARY KEY (`id_edukasi`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_parkir`
 --
 ALTER TABLE `tb_parkir`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_user`
@@ -161,7 +164,29 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_parkir`
 --
 ALTER TABLE `tb_parkir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_aquarium`
+--
+ALTER TABLE `tb_aquarium`
+  ADD CONSTRAINT `tb_aquarium_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+
+--
+-- Constraints for table `tb_edukasi`
+--
+ALTER TABLE `tb_edukasi`
+  ADD CONSTRAINT `tb_edukasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+
+--
+-- Constraints for table `tb_parkir`
+--
+ALTER TABLE `tb_parkir`
+  ADD CONSTRAINT `tb_parkir_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,7 +5,7 @@
 $dbhost = 'localhost'; 
 $dbuser = 'root';     // ini berlaku di xampp
 $dbpass = '';         // ini berlaku di xampp
-$dbname = 'eticket';
+$dbname = 'etiket';
 // melakukan koneksi ke database
 $connect = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 // cek koneksi yang kita lakukan berhasil atau tidak

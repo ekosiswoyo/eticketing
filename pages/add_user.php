@@ -118,7 +118,7 @@ include('header.php');
                 include '../config.php';
                 $no=1;
                 
-                $query = mysqli_query($connect, "SELECT * FROM tb_user");
+                $query = mysqli_query($connect, "SELECT * FROM tb_user where level != 'Administrator'");
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
 
@@ -130,8 +130,8 @@ include('header.php');
                   <td><?php echo $data['level'];?></td>
                   <?php  if($_SESSION['level'] == "Administrator") { ?>
                   <td><center>
-                                <a class='fa fa-fw fa-edit' title='Ubah' href='edit_user.php?id_user="<?php echo $data['id_user'];?>"'></a>
-                                <a class='fa fa-fw fa-eraser' title='Hapus' href='delete_user.php?id_user="<?php echo $data['id_user'];?>"'></a>
+                                <a class="fa fa-fw fa-edit" title="Ubah" href="edit_user.php?id_user=<?php echo $data['id_user'];?>"></a>
+                                <a class="fa fa-fw fa-trash" title="Hapus" href="delete_user.php?id_user=<?php echo $data['id_user'];?>"></a>
                               </center></td>
                   <?php } ?>
                   
@@ -158,7 +158,7 @@ include('header.php');
           
           <!-- /.box -->
 
-          <!-- Input addon -->
+         <!-- Input addon -->
           
           <!-- /.box -->
           <div class="row">
